@@ -1,44 +1,62 @@
 import "./upload.scss";
-function UploadPage(){
-    return(
+import 'antd/dist/antd.css'
+import { Divider, Form, Input, InputNumber, Button } from "antd";
+function UploadPage() {
+    const onSubmit = (values) => {
+        console.log(values);
+    }
+    return (
         <div id="upload" className="innerCon">
             <h2>상품등록하기</h2>
-            <form>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>상품사진</td>
-                        <td><input type="file" name="img"/></td>
-                    </tr>
-                    <tr>
-                        <td>상품명</td>
-                        <td><input type="text" name="productname"/></td>
-                    </tr>
-                    <tr>
-                        <td>판매자 명</td>
-                        <td><input type="text" name="sellername"/></td>
-                    </tr>
-                    <tr>
-                        <td>상품가격</td>
-                        <td><input type="text" name="price"/></td>
-                    </tr>
-                    <tr>
-                        <td>상품소개</td>
-                        <td>
-                            <textarea>
+            <Form name="상품 업로드" onFinish={onSubmit}>
+                <Form.Item name="upload" label={<div className="upload-label">사진등록</div>}>
+                    <div id="upload-img">
+                        <img src="/images/icons/camera.png" />
+                        <span>이미지를 업로드 </span>
+                    </div>
+                </Form.Item>
+                <Divider />
+                <Form.Item name="seller" rules={[{
+                    required: true, message: '판매자 이름을 입력주세요'
+                }]}
+                    label={<div className="upload-label">판매자명</div>}>
+                    <Input size="large" placeholder="이름을 입력" />
+                </Form.Item>
+                <Divider />
+                <Form.Item name="name" rules={[{
+                    required: true, message: '판매자 이름을 입력주세요'
+                }]}
+                    label={<div className="upload-label">상품이름</div>}>
+                    <Input size="large" placeholder="상품이름을 입력" />
+                </Form.Item>
+                <Divider />
 
-                            </textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit">등록</button>
-                            <button type="reset">취소</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </form>
+
+                <Form.Item name="price" rules={[{ required: true, message: '가격을 입력주세요' }]}
+                    label={<div className="upload-label">상품가격</div>}>
+                    <InputNumber defaultValue={0} size="large" />
+                </Form.Item>
+                <Divider />
+                <Form.Item
+                    name="description"
+                    label={<div>상품소개</div>}
+                    rules={[{ required: true, message: "상품소개입력" }]}
+                >
+                    <Input.TextArea size="large"
+                        id='description'
+                        showCount
+                        maxLength={300}
+                        placeholder='상품소개를 적어주세요'
+                    />
+                </Form.Item>
+                <Divider />
+                <Form.Item>
+                    <Button id="submit-button" size="large" htmlType="submit">
+                        상품등록
+                    </Button>
+                </Form.Item>
+            </Form>
+
         </div>
     );
 }
