@@ -8,9 +8,10 @@ function ProductView(){
     const { id } = param;
     useEffect(()=>{
         axios.get(
-            `https://abcc245a-8de9-4205-a7e9-197733bdbc26.mock.pstmn.io/product/${id}`
+            `http://localhost:8080/products/${id}`
         ).then(function(result){
-            setProduct(result.data);
+            setProduct(result.data.product);
+            console.log(result.data);
         })
         .catch(function(error){
             console.log(error);
@@ -32,8 +33,8 @@ function ProductView(){
             <div id="contents-box">
                 <div>{product.name}</div>
                 <div>{product.price}</div>
-                <div>2022년 1월 4일</div>
-                <div>설명글어쩌고 저쩌고....</div>
+                <div>{product.createdAt}</div>
+                <div>{product.description}</div>
             </div>
         </div>
     );
