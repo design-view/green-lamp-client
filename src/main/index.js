@@ -1,5 +1,5 @@
+import 'antd/dist/antd.min.css';
 import { API_URL } from "../config/constants";
-import "antd/dist/antd.css";
 import "./main.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -10,7 +10,7 @@ function MainPage(){
     //비주얼 이미지 state로 관리
     const [ banners, setBanners] =useState([]);
     useEffect(()=>{
-        axios.get(`${API_URL}/products/`)
+        axios.get(`${API_URL}/products`)
         .then(function(result){
             const products = result.data.product;
             console.log(products);

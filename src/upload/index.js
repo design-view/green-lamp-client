@@ -1,4 +1,5 @@
-import "antd/dist/antd.css";
+
+import 'antd/dist/antd.min.css';
 import "./upload.scss";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';

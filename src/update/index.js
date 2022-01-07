@@ -1,4 +1,4 @@
-import "antd/dist/antd.css";
+import 'antd/dist/antd.min.css';
 import { Form, Divider, Input, InputNumber, Button, Upload } from "antd";
 import axios from "axios";
 import { useState, useEffect } from "react";
